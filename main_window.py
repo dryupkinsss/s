@@ -70,3 +70,74 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
+
+"""
+CREATE TABLE users(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(50),
+    password VARCHAR(50)
+);
+
+CREATE TABLE type_material(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_type_material VARCHAR(50)
+);
+
+CREATE TABLE materials(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_material VARCHAR(50)
+);
+
+CREATE TABLE type_products(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_type_products VARCHAR(50)
+);
+
+CREATE TABLE shop(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_shop VARCHAR(50),
+    people INT
+);
+
+CREATE TABLE products(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_products VARCHAR(50),
+    id_type_products INT,
+    article VARCHAR(50),
+    min_price DECIMAL(8,2),
+    id_type_material INT,
+    id_materials INT,
+    id_shop INT,
+    time_ready INT,
+    FOREIGN KEY (id_type_products) REFERENCES type_products(id),
+    FOREIGN KEY (id_type_material) REFERENCES type_material(id),
+    FOREIGN KEY (id_materials) REFERENCES materials(id),
+    FOREIGN KEY (id_shop) REFERENCES shop(id)
+);
+
+INSERT INTO users (login, password)
+VALUES ('user', 'user123');
+
+INSERT INTO type_material (name_type_material)
+VALUES ('Дерево'),
+('Металл');
+
+INSERT INTO materials (name_material)
+VALUES ('Дуб'),
+('Сосна');
+
+INSERT INTO type_products (name_type_products)
+VALUES ('Мягкая мебель'),
+('Кухонная мебель');
+
+INSERT INTO shop (name_shop, people)
+VALUES ('Покрасочный', '45'),
+('Столярный', '60');
+
+INSERT INTO products (name_products, id_type_products, article, min_price, id_materials, id_shop, time_ready)
+VALUES ('Стол', '2', 'STOL001', '10000.00', '1', '2', '40'),
+('Шкаф', '2', 'SHKAF001', '15000.00', '1', '2', '60'),
+('Кресло', '1', 'KRESLO001', '8000.00', '2', '1', '30');
+"""
+
+
